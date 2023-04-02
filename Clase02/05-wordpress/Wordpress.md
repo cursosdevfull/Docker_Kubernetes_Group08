@@ -24,3 +24,7 @@ docker run -d --name server-mysql-wp -p 5100:3306 -e MYSQL_ROOT_PASSWORD=12345 -
 ```
 docker run -d --name server-wp -p 9900:80 -v vol-app-wp:/var/www/html -e WORDPRESS_DB_HOST=server-mysql-wp -e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=12345 -e WORDPRESS_DB_NAME=db_curso --network net-wp wordpress
 ```
+
+### Otra alternativa
+
+docker run -d --name server-wp -p 9900:80 -v vol-app-wp:/var/www/html --network net-wp wordpress
