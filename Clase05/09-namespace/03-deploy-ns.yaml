@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nsp-uat
+  labels:
+    env: uat
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nsp-stg
+  labels:
+    env: stg
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-uat
+  namespace: nsp-uat
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend-uat
+  template:
+    metadata:
+      labels:
+        app: frontend-uat
+    spec:
+      containers:
+        - name: contenedor1
+          image: nginx:alpine
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-stg
+  namespace: nsp-stg
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend-stg
+  template:
+    metadata:
+      labels:
+        app: frontend-stg
+    spec:
+      containers:
+        - name: contenedor1
+          image: nginx:alpine
