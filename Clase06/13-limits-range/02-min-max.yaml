@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev
+  labels:
+    name: dev
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  namespace: dev
+  name: limit-range-dev
+spec:
+  limits:
+    - max:
+        memory: 1Gi
+        cpu: 1
+      min:
+        memory: 100M
+        cpu: 100m
+      type: Container
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: poddefault
+  namespace: dev
+  labels:
+    app: backend
+    env: dev
+spec:
+  containers:
+    - name: container-name
+      image: nginx:alpine
+      resources:
+        limits:
+          memory: 150M
+          cpu: 120m
