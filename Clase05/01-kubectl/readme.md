@@ -3,7 +3,7 @@
 ### Para crear un pod
 
 ```
-kubectl run server --image:nginx:alpine
+kubectl run server --image nginx:alpine
 ```
 
 ### Para conectarnos a un pod fuera del contexto
